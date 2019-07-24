@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 计算属性来反转字符串 -->
+    <div id="app">
+            <p>原始字符串: {{ message }}</p>
+            <p>计算后反转字符串: {{ reversedMessage }}</p>
+    </div>
+
+    <script>
+        var vm =new Vue({
+            el:'#app',
+            data:{
+                message:'Runoob!'
+            },
+            // vm.reversedMessage 依赖于 vm.message，在 vm.message 发生改变时，vm.reversedMessage 也会更新。
+            //computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行
+            computed: {
+                //计算属性的getter
+                reversedMessage:function(){
+                    //this指向vm实例
+                    return this.message.split('').reverse().join('')
+                }
+                
+            }
+        })
+    </script>
+
+    
+</body>
+</html>

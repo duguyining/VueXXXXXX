@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>组件例子</title>
+</head>
+<body>
+    <div id="components-demo">
+        <button-counter></button-counter>
+    </div>
+
+    <script type="text/javascript">
+
+        Vue.component('button-counter',{
+            data:function () {
+                return{
+                    count:0
+                }
+            },
+
+            template:'<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        })
+
+
+        var vm=new Vue({
+            el:'#components-demo',
+            data:{
+
+            }
+        })
+
+
+    </script>
+</body>
+</html>

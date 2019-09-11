@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 动态prop -->
+    <div id="app">
+        <div>
+            <input v-model="parentMsg">
+            <br>
+            <child v-bind:message="parentMsg"></child>
+        </div>
+    </div>
+
+    <script>
+        //注册
+        Vue.component('child',{
+            //声明props
+            props:['message'],
+            //同样也可以在vm实例中像"this.message"这样使用
+            template:'<span>{{ message }}</span>'
+        })
+
+        //创建根实例
+        new Vue({
+            el: '#app',
+            data: {
+                parentMsg: '父组件内容'
+            }
+            })
+    </script>
+</body>
+</html>

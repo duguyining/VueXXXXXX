@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
     <script src="/vue.min.js"></script>
     <title>自定义过滤器</title>
 </head>
 <body>
-    <input id="example">
+
+    <div id="example">
         <p>{{message}}</p>
         <input type="text" v-model="message|filterExample">
     </div>

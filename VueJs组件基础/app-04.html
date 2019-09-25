@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>局部注册</title>
+</head>
+<body>
+    <div id="example">
+        <didi-component></didi-component>
+    </div>
+</body>
+
+<script>
+    var Child=Vue.extend({
+        template:'<div>i am child!</div>>'
+    })
+
+    var Parent=Vue.extend({
+        template:'<p>i am parent</p>>',
+        components:{
+            //didi标签只能用在父组件模版内
+            'child':Child
+        }
+    })
+
+    //创建根实例
+    new Vue({
+        el:'#example',
+        components:{
+            'did-compoent':Parent
+        }
+    })
+</script>
+</html>

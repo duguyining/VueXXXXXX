@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>绑定</title>
+</head>
+<body id="example">
+<input type="text" v-model="info.name"/>
+<!--单次绑定-->
+<child v-bind:msg.once="info"></child>
+<!--&lt;!&ndash;默认单向绑定&ndash;&gt;-->
+<!--<child v-bind:msg="info"></child>-->
+<!--&lt;!&ndash;双向绑定&ndash;&gt;-->
+<!--<child v-bind:msg.sync="info"></child>-->
+</body>
+<script>
+    //创建
+    new Vue({
+        el:'#example',
+        data:function () {
+            return{
+                info:{
+                    name:'顺风车'
+                }
+            }
+        },
+        components:{
+            'child':{
+                //声明props
+                props:['msg'],
+                template:'<div>{{msg.name}}DDFamily</div>>'
+            }
+        }
+    })
+</script>
+
+</html>

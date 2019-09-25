@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>注册组件</title>
+</head>
+<body>
+    <div id="example">
+        <didi-component></didi-component>
+    </div>
+</body>
+
+<script>
+    var DIDIComponent=Vue.extend({
+        template:'<div>A custom component!</div>'
+    })
+
+    //注册
+    Vue.component('didi-component',DIDIComponent)
+
+    //创建根实例
+    new Vue ({
+        el:'#example'
+    })
+</script>
+</html>

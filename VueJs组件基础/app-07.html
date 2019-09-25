@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>动态组件</title>
+</head>
+
+<body id="example">
+<input type="radio" id="one" value="fast" v-model="currentView">
+<label for="one">fast</label>
+<br>
+<input type="radio" id="two" value="bus" v-model="currentView">
+<label for="two">fast</label>
+<br>
+<input type="radio" id="three" value="business" v-model="currentView">
+<label for="three">fast</label>
+<template id="bus">
+    <div>滴滴巴士</div>
+</template>
+<template id="business">
+    <div>滴滴专车</div>
+</template>
+<template id="fast">
+    <div>滴滴快车</div>
+</template>
+
+<component is:"currentView">
+//组见在vm.currentview变化时改变
+</component>
+
+</body>
+<script>
+ var bus=Vue.extend({
+     template:'#bus',
+     replace:true
+ });
+ var business=Vue.extend({
+     template:'#business',
+     replace:true
+ });
+
+ var fast=Vue.extend({
+     template:'#fast',
+     replace:true
+ });
+
+ //创建根实例
+    new Vue({
+        el:'#example',
+        data:{
+            currentView:'fast'
+        },
+        components:{
+            fast:fast,
+            bus:bus,
+            business:business
+        }
+    })
+
+</script>
+</html>

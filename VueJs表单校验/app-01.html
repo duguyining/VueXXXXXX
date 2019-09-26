@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-validate="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="/vue.min.js"></script>
+    <title>基本使用</title>
+</head>
+<body>
+    <div id="app">
+        <validator name="validation">
+            <form novalidate>
+                <div class="username-filed">
+                    <label for="username">username</label>
+                    <input type="text" id="username" v-validate:username="['required']">
+                </div>
+
+                <div class="comment-filed">
+                    <label for="comment">comment</label>
+                    <input type="text" id="comment" v-validate:comment="{maxlength:126}">
+                </div>
+                <div class="errors">
+                    <p v-if="$validation.username.required">Required your name</p>
+                    <p v-if="$validation.comment.maxlength">your comment is too long</p>
+                </div>
+                <input type="submit" value="send" v-if="$validation.valid">
+            </form>
+        </validator>
+    </div>
+</body>
+
+<script>
+    var Vue=require('vue');
+    var VueVadalidator=require('vue-validator');
+
+    Vue.use(VueVadalidator);
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>
